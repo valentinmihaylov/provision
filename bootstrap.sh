@@ -12,8 +12,9 @@ if [ ! -d "$DEVOPS_REPO_NAME" ]; then
 else
     cd $DEVOPS_REPO_NAME
     git stash && git pull
+    cd ..
 fi
 
-cd provision
+cd $DEVOPS_REPO_NAME/provision
 ansible-playbook installation.yml --sudo -K -c local -i "localhost,"
 
