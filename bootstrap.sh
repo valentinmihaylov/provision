@@ -2,6 +2,7 @@
 
 DEVOPS_REPO_NAME="devops"
 
+sudo apt-get update
 sudo apt-get install -y git ansible
 
 git config --global user.email "valentin.mihaylov@gmail.com"
