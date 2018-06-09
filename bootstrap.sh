@@ -2,6 +2,8 @@
 
 DEVOPS_REPO_NAME="devops"
 
+sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install -y git ansible
 
@@ -18,4 +20,3 @@ fi
 
 cd $DEVOPS_REPO_NAME/provision
 ansible-playbook installation.yml --sudo -K -c local -i "localhost,"
-
