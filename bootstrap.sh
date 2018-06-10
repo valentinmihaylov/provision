@@ -20,4 +20,4 @@ else
 fi
 
 cd $DEVOPS_REPO_NAME/provision
-ansible-playbook installation.yml --sudo -K -c local -i "localhost,"
+./install-laptop.sh
