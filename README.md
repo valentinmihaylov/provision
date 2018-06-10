@@ -2,6 +2,7 @@ wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/boo
 
 h1 Useful packages and commands
 
+```bash
 sudo apt-get install     apt-transport-https     ca-certificates     curl     software-properties-common
 
 sudo add-apt-repository ppa:webupd8team/java
@@ -53,3 +54,4 @@ pdftk some.pdf cat 1 output some.pdf2
 pdf-search -i ".*bonus.*" ".*targo.*2016.*pdf"
 sudo apt-get install calibre
 ebook-convert Argentina\ 2014\ -\ Lonely\ Planet.epub Arg.mobi
+```
