@@ -19,5 +19,7 @@ else
     cd ..
 fi
 
+sudo apt-get remove git -y # git will probably have an old version
+
 cd $DEVOPS_REPO_NAME/provision
 ./install-laptop.sh
