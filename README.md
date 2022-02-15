@@ -1,4 +1,8 @@
-wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/bootstrap.sh | bash
+`wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/bootstrap.sh | bash`
+
+`wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-tech.sh | bash`
+
+`wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-media.sh | bash`
 
 ## Useful packages and commands
 
