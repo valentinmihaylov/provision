@@ -26,5 +26,6 @@ fi
 echo -e "\n###\nstart provisioning\n###\n"
 cd $DEVOPS_REPO_NAME/provision
 ansible-galaxy install --roles-path devops/roles/ gantsign.visual-studio-code
+ansible-galaxy collection install community.general
 
 ./install-laptop.sh
