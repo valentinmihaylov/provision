@@ -28,7 +28,7 @@ fi
 echo -e "\n###\nstart provisioning\n###\n"
 cd $DEVOPS_REPO_NAME/provision
 git checkout -b 2204 origin/2204
-ansible-galaxy install --roles-path devops/roles/ gantsign.visual-studio-code
+ansible-galaxy install --roles-path roles/ gantsign.visual-studio-code
 ansible-galaxy collection install community.general
 
 ./install-laptop.sh
