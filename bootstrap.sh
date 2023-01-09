@@ -18,7 +18,7 @@ if [ ! -d "$DEVOPS_REPO_NAME" ]; then
     echo -e "\n###\nget repo from bitbucket\n###\n"
     whoami
     pwd
-    git clone https://mihaylov-software:$(cat ~/bitbucket-pass.txt)@bitbucket.org/mihaylov-software/devops.git
+    git clone https://mihaylov-software:$(cat /root/bitbucket-pass.txt)@bitbucket.org/mihaylov-software/devops.git
 else
     cd $DEVOPS_REPO_NAME
     git stash && git pull
@@ -27,6 +27,7 @@ fi
 
 echo -e "\n###\nstart provisioning\n###\n"
 cd $DEVOPS_REPO_NAME/provision
+git checkout -b 2204 origin/2204
 ansible-galaxy install --roles-path devops/roles/ gantsign.visual-studio-code
 ansible-galaxy collection install community.general
 
