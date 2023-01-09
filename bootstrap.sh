@@ -16,6 +16,8 @@ if [ ! -d "$DEVOPS_REPO_NAME" ]; then
     git config --global user.name "Valentin Mihaylov"
 
     echo -e "\n###\nget repo from bitbucket\n###\n"
+    whoami
+    pwd
     git clone https://mihaylov-software:$(cat ~/bitbucket-pass.txt)@bitbucket.org/mihaylov-software/devops.git
 else
     cd $DEVOPS_REPO_NAME
