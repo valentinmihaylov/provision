@@ -19,7 +19,7 @@ git config --global user.email "valentin.mihaylov@gmail.com"
 git config --global user.name "Valentin Mihaylov"
 
 echo -e "\n###\nget repo from bitbucket\n###\n"
-git clone https://mihaylov-software:$(cat $1)@bitbucket.org/mihaylov-software/devops.git
+git clone https://mihaylov-software:$(cat $2)@bitbucket.org/mihaylov-software/devops.git
 
 echo -e "\n###\nstart vagrant\n###\n"
 cd $DEVOPS_REPO_NAME/vagrant

@@ -1,9 +1,21 @@
+## provisioning for a new computer
+
+### test on the new one
+
+`wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/test-on-new-pc.sh | bash -s user@pc.local /path/to/bitbucket-pass-file`
+
+### test on the old one
+
+go to devops/vagrant dir and
+`vagrant up`
+
+### run to provision the new one
+
 `wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-new-pc.sh | bash -s user@pc.local /path/to/bitbucket-pass-file`
 
-`wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/bootstrap.sh | bash`
+## provision raspi
 
 `wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-tech.sh | bash`
-
 `wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-media.sh | bash`
 
 ## Useful packages and commands
