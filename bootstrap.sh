@@ -1,5 +1,7 @@
 #!/bin/sh
 
+### 1 param expected - path to bitbucket pass file
+
 DEVOPS_REPO_NAME="devops"
 
 if [ ! -d "$DEVOPS_REPO_NAME" ]; then
@@ -16,9 +18,7 @@ if [ ! -d "$DEVOPS_REPO_NAME" ]; then
     git config --global user.name "Valentin Mihaylov"
 
     echo -e "\n###\nget repo from bitbucket\n###\n"
-    whoami
-    pwd
-    git clone https://mihaylov-software:$(cat ~/bitbucket-pass.txt)@bitbucket.org/mihaylov-software/devops.git
+    git clone https://mihaylov-software:$(cat $1)@bitbucket.org/mihaylov-software/devops.git
 else
     cd $DEVOPS_REPO_NAME
     git stash && git pull
@@ -27,7 +27,7 @@ fi
 
 echo -e "\n###\nstart provisioning\n###\n"
 cd $DEVOPS_REPO_NAME/provision
-ansible-galaxy install --roles-path devops/roles/ gantsign.visual-studio-code
+ansible-galaxy install --roles-path roles/ gantsign.visual-studio-code
 ansible-galaxy collection install community.general
 
 ./install-laptop.sh
