@@ -1,3 +1,5 @@
+`wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-new-pc.sh | bash -s user@pc.local /path/to/bitbucket-pass-file`
+
 `wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/bootstrap.sh | bash`
 
 `wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-tech.sh | bash`
