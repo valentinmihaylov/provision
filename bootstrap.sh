@@ -1,6 +1,7 @@
 #!/bin/sh
 
-### 1 param expected - path to bitbucket pass file
+### param 1 - path to bitbucket pass file
+### param 2 - git branch
 
 DEVOPS_REPO_NAME="devops"
 
@@ -19,9 +20,11 @@ if [ ! -d "$DEVOPS_REPO_NAME" ]; then
 
     echo -e "\n###\nget repo from bitbucket\n###\n"
     git clone https://mihaylov-software:$(cat $1)@bitbucket.org/mihaylov-software/devops.git
+    cd $DEVOPS_REPO_NAME
+    git checkout -b $2 origin/$2
 else
     cd $DEVOPS_REPO_NAME
-    git stash && git pull
+    git stash && git checkout $2 && git pull
     cd ..
 fi
 
