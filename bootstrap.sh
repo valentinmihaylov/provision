@@ -29,5 +29,4 @@ else
 fi
 
 echo -e "\n###\nstart provisioning\n###\n"
-cd $DEVOPS_REPO_NAME
 ./install-laptop.sh
