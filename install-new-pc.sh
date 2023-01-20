@@ -5,4 +5,4 @@
 
 scp $1:$2 $2
 
-wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/bootstrap.sh | bash -s $2
+wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/bootstrap.sh | bash -s $2 master
