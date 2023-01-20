@@ -19,7 +19,7 @@ if [ ! -d "$DEVOPS_REPO_NAME" ]; then
     git config --global user.name "Valentin Mihaylov"
 
     echo -e "\n###\nget repo from bitbucket\n###\n"
-    git clone https://mihaylov-software:$(cat $1)@bitbucket.org/mihaylov-software/devops.git
+    git clone https://mihaylov-software:$(cat $1)@bitbucket.org/mihaylov-software/$DEVOPS_REPO_NAME.git
     cd $DEVOPS_REPO_NAME
     git checkout -b $2 origin/$2
 else
