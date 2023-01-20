@@ -7,7 +7,7 @@
 ### test on the old one
 
 go to devops/vagrant dir and
-`vagrant up`
+`./run_vagrant.sh`
 
 ### run to provision the new one
 
