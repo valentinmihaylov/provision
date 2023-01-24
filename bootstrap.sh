@@ -25,7 +25,6 @@ if [ ! -d "$DEVOPS_REPO_NAME" ]; then
 else
     cd $DEVOPS_REPO_NAME
     git stash && git checkout $2 && git pull
-    cd ..
 fi
 
 echo -e "\n###\nstart provisioning\n###\n"
