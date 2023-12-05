@@ -14,9 +14,37 @@ go to devops/vagrant dir and
 `wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-new-pc.sh | bash -s user@pc.local /path/to/bitbucket-pass-file`
 
 ## provision raspi
+### pitech
 
-`wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-tech.sh | bash`
+* enable cgroups
+```bash
+sudo sh -c "echo ' cgroup_enable=memory cgroup_memory=1' >> /boot/cmdline.txt"
+reboot
+```
+* disable wlan0
+```bash
+sudo nano /boot/config.txt
+### Under "Additional overlays and parameters are documented" add these 2 lines
+dtoverlay=disable-wifi
+dtoverlay=disable-bt
+```
+* start installation  
+```bash
+wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-tech.sh | bash`  
+```
+
+### media
+* disable wlan0
+```bash
+sudo nano /boot/config.txt
+### Under "Additional overlays and parameters are documented" add these 2 lines
+dtoverlay=disable-wifi
+dtoverlay=disable-bt
+```
+* start installation  
+```bash
 `wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-media.sh | bash`
+```
 
 ## Useful packages and commands
 
