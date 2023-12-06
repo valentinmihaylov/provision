@@ -1,9 +1,9 @@
 #!/bin/sh
 
-echo -e "\n###\nupdate system, install git and ansible\n###\n"
+echo -e "\n###\nupdate system, install git\n###\n"
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get install software-properties-common git ansible -y
+sudo apt-get install software-properties-common git -y
 
 echo -e "\n###\nconfigure git\n###\n"
 git config --global user.email "valentin.mihaylov@gmail.com"

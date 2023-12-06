@@ -28,6 +28,13 @@ sudo nano /boot/config.txt
 dtoverlay=disable-wifi
 dtoverlay=disable-bt
 ```
+* setup ssh
+```bash
+mkdir .ssh && cd .ssh
+touch authorized_keys
+chmod 700 ~/.ssh/
+chmod 600 ~/.ssh/authorized_keys
+```
 * start installation  
 ```bash
 wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-tech.sh | bash`  
