@@ -16,42 +16,60 @@ go to devops/vagrant dir and
 ## provision raspi
 ### pitech
 
+* flash SD card
+  * Using the raspi imager
+  * enable ssh and paste `id_rsa.pub` in `authorized_keys`
+  * FLASH, then mount `/bootfs` & `/rootfs`
+  * disable wlan0
+    ```bash
+    sudo sh -c "echo '\ndtoverlay=disable-wifi\ndtoverlay=disable-bt' >> /media/"$(whoami)"/bootfs/config.txt"
+    ```
+  * prepare first boot
+    ```bash
+    cp set-static-ip.sh /media/"$(whoami)"/rootfs/home/pi/
+    sudo cp /media/"$(whoami)"/rootfs/etc/rc.local /media/"$(whoami)"/rootfs/etc/rc.local.bkp
+    sudo cp pitech.rc.local /media/"$(whoami)"/rootfs/etc/rc.local
+    ```
+  * configure SWAP
+    ```bash
+    sudo sed -i 's/CONF_SWAPSIZE=[[:digit:]]\+/CONF_SWAPSIZE=4096/g' /media/"$(whoami)"/rootfs/etc/dphys-swapfile
+    ```
+
+* login via ssh & clean up:
+  ```bash
+  ssh-keygen -f "/home/waliu/.ssh/known_hosts" -R "pitech.local"
+  ssh-pitech
+  sudo mv /etc/rc.local.bkp /etc/rc.local && rm /home/pi/set-static-ip.sh
+  ```
 * enable cgroups
-```bash
-sudo sh -c "echo ' cgroup_enable=memory cgroup_memory=1' >> /boot/cmdline.txt"
-reboot
-```
-* disable wlan0
-```bash
-sudo nano /boot/config.txt
-### Under "Additional overlays and parameters are documented" add these 2 lines
-dtoverlay=disable-wifi
-dtoverlay=disable-bt
-```
-* setup ssh
-```bash
-mkdir .ssh && cd .ssh
-touch authorized_keys
-chmod 700 ~/.ssh/
-chmod 600 ~/.ssh/authorized_keys
-```
+  ```bash
+  sudo sh -c "echo ' cgroup_enable=memory cgroup_memory=1' >> /boot/cmdline.txt"
+  sudo reboot
+  ```
 * start installation  
-```bash
-wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-tech.sh | bash`  
-```
+  ```bash
+  wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-tech.sh | bash
+  ```
+* refresh kube config
+  ```bash
+  mv ~/.kube/config ~/.kube/config.bkp
+  scp pi@pitech.local:~/.kube/config ~/.kube/config
+  chmod 700 ~/.kube/config
+  # test with 'helm list' or 'kubens'
+  ```
 
 ### media
 * disable wlan0
-```bash
-sudo nano /boot/config.txt
-### Under "Additional overlays and parameters are documented" add these 2 lines
-dtoverlay=disable-wifi
-dtoverlay=disable-bt
-```
+  ```bash
+  sudo nano /boot/config.txt
+  ### Under "Additional overlays and parameters are documented" add these 2 lines
+  dtoverlay=disable-wifi
+  dtoverlay=disable-bt
+  ```
 * start installation  
-```bash
-`wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-media.sh | bash`
-```
+  ```bash
+  wget -O- https://raw.githubusercontent.com/valentinmihaylov/provision/master/install-pi-media.sh | bash
+  ```
 
 ## Useful packages and commands
 
